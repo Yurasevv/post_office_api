@@ -1,5 +1,5 @@
 CREATE TABLE post_office (
-    postal_code BIGSERIAL PRIMARY KEY,
+    postal_code PRIMARY KEY UNIQUE,
     name VARCHAR(100) NOT NULL,
     address VARCHAR(255) NOT NULL
 );
@@ -18,11 +18,11 @@ CREATE TABLE postal_movement (
 
     postal_item INT
         REFERENCES postal_item (id)
-        ON DELETE CASCADE,
+        ON DELETE RESTRICT,
 
     post_office_postal_code INT NOT NULL
         REFERENCES post_office (postal_code)
-        ON DELETE CASCADE,
+        ON DELETE RESTRICT,
 
     arrival_time TIMESTAMP NULL,
     departure_time TIMESTAMP NULL
