@@ -7,7 +7,6 @@ import com.yurasevv.post_office_api.models.PostalMovement;
 import com.yurasevv.post_office_api.repos.PostOfficeRepo;
 import com.yurasevv.post_office_api.repos.PostalItemRepo;
 import com.yurasevv.post_office_api.repos.PostalMovementRepo;
-import com.yurasevv.post_office_api.util.DtoMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +29,8 @@ public class PostalItemService {
     @Transactional
     public PostalItem registerPostalItem(PostalItem postalItem) {
         postalItem.setStatus(PostalItemStatus.REGISTERED);
-        return postalItemRepo.save(postalItem);
+        postalItemRepo.save(postalItem);
+        return postalItem;
     }
 
     @Transactional
@@ -62,7 +62,8 @@ public class PostalItemService {
         PostalItem postalItem = postalItemRepo.findById(postalItemId)
                 .orElseThrow(() -> new PostalItemException("Postal item not found"));
         postalItem.setStatus(PostalItemStatus.DELIVERED);
-        return postalItemRepo.save(postalItem);
+        postalItemRepo.save(postalItem);
+        return postalItem;
     }
 
     public void deleteById(Integer postalItemId) {
