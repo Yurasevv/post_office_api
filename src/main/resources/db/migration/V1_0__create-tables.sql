@@ -1,5 +1,5 @@
 CREATE TABLE post_office (
-    postal_code PRIMARY KEY UNIQUE,
+    postal_code INT PRIMARY KEY UNIQUE,
     name VARCHAR(100) NOT NULL,
     address VARCHAR(255) NOT NULL
 );
